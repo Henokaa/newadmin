@@ -20,31 +20,38 @@ const useStyles = makeStyles({
   }
 })
 
-export default function Create() {
+export default function Createticket() {
   const classes = useStyles()
   const history = useHistory()
   const [title, setTitle] = useState('')
-  const [details, setDetails] = useState('')
+  const [Name, setName] = useState('')
+  const [Date, setDate] = useState('')
   const [titleError, setTitleError] = useState(false)
-  const [detailsError, setDetailsError] = useState(false)
-  const [category, setCategory] = useState('todos')
+  const [NameError, setNameError] = useState(false)
+  const [DateError, setDateError] = useState(false)
+  const [category, setCategory] = useState('Low')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setTitleError(false)
-    setDetailsError(false)
+    setNameError(false)
+    setDateError(false)
+
 
     if (title === '') {
       setTitleError(true)
     }
-    if (details === '') {
-      setDetailsError(true)
+    if (Name === '') {
+      setNameError(true)
     }
-    if (title && details) {
-      fetch('http://localhost:8000/notes', {
+    if (Date === '') {
+        setDateError(true)
+      }
+    if (title && Name && Date) {
+      fetch('http://localhost:8000/tickets', {
         method: 'POST',
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify({ title, details, category })
+        body: JSON.stringify({ title, Name, Date, category })
       }).then(() => history.push('/'))
     } 
   }
@@ -57,13 +64,14 @@ export default function Create() {
         component="h2"
         gutterBottom
       >
-        Create a New Note
+        Create a New Tickets
       </Typography>
+
       
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField className={classes.field}
           onChange={(e) => setTitle(e.target.value)}
-          label="Note Title" 
+          label="Ticket Title" 
           variant="outlined" 
           color="secondary" 
           fullWidth
@@ -71,17 +79,23 @@ export default function Create() {
           error={titleError}
         />
         <TextField className={classes.field}
-          onChange={(e) => setDetails(e.target.value)}
-          label="Details"
-          variant="outlined"
-          color="secondary"
-          multiline
-          rows={4}
+          onChange={(e) => setName(e.target.value)}
+          label="Ticket Name" 
+          variant="outlined" 
+          color="secondary" 
           fullWidth
           required
-          error={detailsError}
+          error={NameError}
         />
-
+        <TextField className={classes.field}
+          onChange={(e) => setDate(e.target.value)}
+          label="Ticket Date" 
+          variant="outlined" 
+          color="secondary" 
+          fullWidth
+          required
+          error={DateError}
+        />
         {/* <Radio value="hello" />
         <Radio value="goodbye" /> */}
 
@@ -89,9 +103,9 @@ export default function Create() {
           <FormLabel>Tasks Category</FormLabel>
           <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
             {/* <FormControlLabel value="money" control={<Radio />} label="Money" /> */}
-            <FormControlLabel value="todos" control={<Radio />} label="Todos" />
-            <FormControlLabel value="reminders" control={<Radio />} label="Reminders" />
-            <FormControlLabel value="work" control={<Radio />} label="Work" />
+            <FormControlLabel value="High" control={<Radio />} label="High" />
+            <FormControlLabel value="Medium" control={<Radio />} label="Medium" />
+            <FormControlLabel value="Low" control={<Radio />} label="Low" />
           </RadioGroup>
         </FormControl>
 

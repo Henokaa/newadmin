@@ -58,14 +58,24 @@ export default function Layout({ children }) {
 
   const menuItems = [
     { 
-      text: 'My Notes', 
+      text: 'Home', 
       icon: <SubjectOutlined color="secondary" />, 
       path: '/' 
     },
     { 
-      text: 'Create Note', 
+      text: 'Create Tasks', 
       icon: <AddCircleOutlineOutlined color="secondary" />, 
       path: '/create' 
+    },
+    { 
+      text: 'Tickets', 
+      icon: <SubjectOutlined color="secondary" />,  
+      path: '/Tickets' 
+    },
+    { 
+      text: 'Create Tickets', 
+      icon: <AddCircleOutlineOutlined color="secondary" />, 
+      path: '/createticket' 
     },
   ];
 
@@ -108,7 +118,7 @@ export default function Layout({ children }) {
           {menuItems.map((item) => (
             <ListItem 
               button 
-              key={item.text} // menu item text
+              key={item.text} // menu item text, otem path go to its path
               onClick={() => history.push(item.path)} // The useHistory() hook returns the history, Pushes a new entry onto the history stack. Useful to redirect users to page
               className={location.pathname === item.path ? classes.active : null} // The useLocation() is very useful to get and use the query parameters defined in the URL.
             >
