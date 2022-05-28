@@ -12,6 +12,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import { format } from 'date-fns'
 import Avatar from '@material-ui/core/Avatar'
+import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
 
 const drawerWidth = 240
 
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => {
     },
     drawerPaper: {
       width: drawerWidth,
+      backgroundColor: '#d5d5d5',
     },
     active: {
       background: '#f4f4f4'

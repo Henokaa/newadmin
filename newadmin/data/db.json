@@ -25,12 +25,6 @@
       "id": 4
     },
     {
-      "title": "Pay the milkman",
-      "details": "Mario ipsum RGB mushroom 1-up. Cloud lakitu slide fire flower pipe jump swim, lava slide koopa troopa side-scrolling starman fire bar koopa paratroopa! Pipe cloud buzzy beetle koopa troopa game over, goomba invincible Mario green shell slide koopa paratroopa fire bar question block 1985 koopa troopa fireball Mushroom Kingdom. Lava Mushroom Kingdom. Mario ipsum RGB mushroom 1-up. Cloud lakitu slide fire flower pipe jump swim, lava slide koopa troopa side-scrolling starman fire bar koopa paratroopa! Pipe cloud buzzy beetle koopa troopa game over, goomba invincible Mario green shell slide koopa paratroopa fire bar question block 1985 koopa troopa fireball Mushroom Kingdom. Lava Mushroom Kingdom.",
-      "category": "money",
-      "id": 5
-    },
-    {
       "title": "Check my promo codes",
       "details": "Mario ipsum RGB mushroom 1-up. Cloud lakitu slide fire flower pipe jump swim, lava slide koopa troopa side-scrolling starman fire bar koopa paratroopa! Pipe cloud buzzy beetle koopa troopa game over, goomba invincible Mario green shell slide koopa paratroopa fire bar question block 1985 koopa troopa fireball Mushroom Kingdom. Lava Mushroom Kingdom.",
       "category": "reminders",
@@ -57,17 +51,17 @@
   ],
   "tickets": [
     {
-      "title": "Henok",
+      "title": "2 minute text to speech",
       "Name": "Name",
       "Date": "Date",
       "category": "Low",
       "id": 10
     },
     {
-      "title": "t1",
-      "Name": "n1",
-      "Date": "d1",
-      "category": "Low",
+      "title": "5 minute text to speech",
+      "Name": "Leul",
+      "Date": "april/2/2019",
+      "category": "High",
       "id": 11
     }
   ]
