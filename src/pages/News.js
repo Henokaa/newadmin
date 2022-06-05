@@ -3,6 +3,7 @@ import Container from '@material-ui/core/Container'
 import Masonry from 'react-masonry-css'
 import NoteCard from '../components/NoteCard'
 import { Redirect } from "react-router-dom";
+import NewsCard from '../components/NewsCard';
 export default function News({ authorized }) {
   const [news, setNews] = useState([]);
 
@@ -43,7 +44,7 @@ export default function News({ authorized }) {
         columnClassName="my-masonry-grid_column">
         {news.map(news => (
           <div key={news.id}>
-            <NoteCard note={news} handleDelete={handleDelete} />
+            <NewsCard news={news} handleDelete={handleDelete} />
           </div>
         ))}
       </Masonry>
