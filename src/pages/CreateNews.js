@@ -11,6 +11,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
 import { useHistory } from 'react-router-dom'
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles({
   field: {
@@ -24,34 +25,28 @@ export default function CreateNews() {
   const classes = useStyles()
   const history = useHistory()
   const [title, setTitle] = useState('')
-  const [Name, setName] = useState('')
-  const [Date, setDate] = useState('')
+  const [disc, setDisc] = useState('')
+  const [details, setDetails] = useState('')
   const [titleError, setTitleError] = useState(false)
-  const [NameError, setNameError] = useState(false)
-  const [DateError, setDateError] = useState(false)
-  const [category, setCategory] = useState('Low')
+  const [detailsError, setDetailsError] = useState(false)
+  const [category, setCategory] = useState('todos')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setTitleError(false)
-    setNameError(false)
-    setDateError(false)
-
+    setDetailsError(false)
 
     if (title === '') {
       setTitleError(true)
     }
-    if (Name === '') {
-      setNameError(true)
+    if (details === '') {
+      setDetailsError(true)
     }
-    if (Date === '') {
-        setDateError(true)
-      }
-    if (title && Name && Date) {
+    if (title && details) {
       fetch('http://localhost:8000/news', {
         method: 'POST',
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify({ title, Name, Date, category })
+        body: JSON.stringify({ title, details, category })
       }).then(() => history.push('/'))
     } 
   }
@@ -66,12 +61,11 @@ export default function CreateNews() {
       >
         Create a News
       </Typography>
-
       
       <form noValidate autoComplete="off" onSubmit={handleSubmit}>
         <TextField className={classes.field}
           onChange={(e) => setTitle(e.target.value)}
-          label="Ticket Title" 
+          label="News Title" 
           variant="outlined" 
           color="secondary" 
           fullWidth
@@ -79,33 +73,53 @@ export default function CreateNews() {
           error={titleError}
         />
         <TextField className={classes.field}
-          onChange={(e) => setName(e.target.value)}
-          label="Ticket Name" 
+          onChange={(e) => setDisc(e.target.value)}
+          label="Description" 
           variant="outlined" 
           color="secondary" 
           fullWidth
           required
-          error={NameError}
+          error={titleError}
         />
         <TextField className={classes.field}
-          onChange={(e) => setDate(e.target.value)}
-          label="Ticket Date" 
-          variant="outlined" 
-          color="secondary" 
+          onChange={(e) => setDetails(e.target.value)}
+          label="Details"
+          variant="outlined"
+          color="secondary"
+          multiline
+          rows={4}
           fullWidth
           required
-          error={DateError}
+          error={detailsError}
         />
+
         {/* <Radio value="hello" />
         <Radio value="goodbye" /> */}
 
         <FormControl className={classes.field}>
-          <FormLabel>Tasks Category</FormLabel>
+          <FormLabel>News Category</FormLabel>
           <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
+            <Grid container>
             {/* <FormControlLabel value="money" control={<Radio />} label="Money" /> */}
-            <FormControlLabel value="High" control={<Radio />} label="High" />
-            <FormControlLabel value="Medium" control={<Radio />} label="Medium" />
-            <FormControlLabel value="Low" control={<Radio />} label="Low" />
+            <Grid item md={4}> 
+            <FormControlLabel value="Economics" control={<Radio />} label="Economics" />
+            </Grid>
+            <Grid item md={4}>
+            <FormControlLabel value="Politics" control={<Radio />} label="Politics" />
+            </Grid>
+            <Grid item md={4}>
+            <div></div>
+            </Grid>
+            <Grid item md={4}>
+            <FormControlLabel value="Sport" control={<Radio />} label="Sport" />
+            </Grid>
+            <Grid item md={4}>
+            <FormControlLabel value="Alert" control={<Radio />} label="Alert" />
+            </Grid>
+            <Grid item md={4}>
+            <div></div>
+            </Grid>
+            </Grid>
           </RadioGroup>
         </FormControl>
 
@@ -114,7 +128,7 @@ export default function CreateNews() {
           color="secondary" 
           variant="contained"
           endIcon={<KeyboardArrowRightIcon />}>
-          Submit
+          Synthesize
         </Button>
       </form>
 
