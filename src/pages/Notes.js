@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Container from '@material-ui/core/Container'
 import Masonry from 'react-masonry-css'
 import NoteCard from '../components/NoteCard'
-
-export default function Notes() {
+import { Redirect } from "react-router-dom";
+export default function Notes({ authorized }) {
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -26,8 +26,17 @@ export default function Notes() {
     700: 1
   };
 
+  
   return (
+  
     <Container>
+
+{(() => {
+  if(!authorized) {
+    return <Redirect to="/login" />;
+  }
+})}
+
       <Masonry
         breakpointCols={breakpoints}
         className="my-masonry-grid"

@@ -13,6 +13,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import { format } from 'date-fns'
 import Avatar from '@material-ui/core/Avatar'
 import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
+import AddIcon from '@material-ui/icons/Add';
 
 const drawerWidth = 240
 
@@ -65,6 +66,11 @@ export default function Layout({ children }) {
       path: '/' 
     },
     { 
+      text: 'Create News', 
+      icon: <AddIcon color="secondary" />, 
+      path: '/createnews' 
+    },
+    { 
       text: 'Create Tasks', 
       icon: <AddCircleOutlineOutlined color="secondary" />, 
       path: '/create' 
@@ -76,9 +82,10 @@ export default function Layout({ children }) {
     },
     { 
       text: 'Create Tickets', 
-      icon: <AddCircleOutlineOutlined color="secondary" />, 
+      icon: <AddIcon color="secondary" />, 
       path: '/createticket' 
     },
+ 
   ];
 
   return (

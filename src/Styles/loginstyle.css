@@ -1,0 +1,254 @@
+
+
+  input:not(:last-child),
+  button:not(:last-child) {
+    margin-bottom: 5px;
+  }
+  input:focus,
+  button:focus {
+    outline: none;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    border: none;
+    border-bottom: 1px solid #7dbbc3;
+    font-size: 1.5em;
+    padding: 0.5em;
+  }
+  
+
+  button:hover,
+  input[type="submit"]:hover,
+  .button:hover {
+    background-color: #fae2df;
+  }
+  button:active,
+  input[type="submit"]:active,
+  .button:active {
+    background-color: white;
+  }
+  button.star,
+  button.create,
+  button.update,
+  input[type="submit"].star,
+  input[type="submit"].create,
+  input[type="submit"].update,
+  .button.star,
+  .button.create,
+  .button.update {
+    background-color: #61df1800;
+    border: 1px solid #82ee8b;
+  }
+  button.star:hover,
+  button.create:hover,
+  button.update:hover,
+  input[type="submit"].star:hover,
+  input[type="submit"].create:hover,
+  input[type="submit"].update:hover,
+  .button.star:hover,
+  .button.create:hover,
+  .button.update:hover {
+    background-color: #07a6c27c;
+  }
+  button.star:active,
+  button.create:active,
+  button.update:active,
+  input[type="submit"].star:active,
+  input[type="submit"].create:active,
+  input[type="submit"].update:active,
+  .button.star:active,
+  .button.create:active,
+  .button.update:active {
+    background-color: #c3e0e3;
+  }
+  button.delete,
+  input[type="submit"].delete,
+  .button.delete {
+    background-color: #de6b48;
+    border: 1px solid #ce4d25;
+  }
+  button.delete:hover,
+  input[type="submit"].delete:hover,
+  .button.delete:hover {
+    background-color: #e68e73;
+  }
+  button.delete:active,
+  input[type="submit"].delete:active,
+  .button.delete:active {
+    background-color: #eeb19e;
+  }
+  
+  input[type="file"] {
+    margin: 1em 0;
+    padding: 1em 0;
+  }
+  
+  .Application {
+    max-width: 500px;
+    margin: 50px;
+    flex: auto;
+  }
+  
+  .CurrentUser,
+  .SignUp,
+  .SignIn {
+    border: 1px solid #7dbbc3;
+    padding: 1em;
+    margin-bottom: 1em;
+  }
+  .CurrentUser h2,
+  .SignUp h2,
+  .SignIn h2 {
+    margin: 0.5em 0.5em;
+    padding: 0.5em;
+    border-left: 5px solid #daedbd;
+  }
+  
+  .oxyy-login-register .social-icons li.social-icons-facebook a {
+    background-color: #1874eb;
+  }
+  
+  .oxyy-login-register .social-icons.social-icons-rounded li a {
+    border-radius: 0.25rem;
+  }
+  
+  .oxyy-login-register .social-icons li a {
+    display: block;
+    height: 38px;
+    line-height: 38px;
+    width: 38px;
+    font-size: 18px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+  }
+  .oxyy-login-register .social-icons li {
+    margin: 0px 6px 4px;
+    padding: 0;
+    overflow: visible;
+  }
+  .oxyy-login-register .social-icons {
+    margin: 0;
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    list-style: none;
+  }
+  .oxyy-login-register .social-icons li {
+    margin: 0px 6px 4px;
+    padding: 0;
+    overflow: visible;
+  }
+  .oxyy-login-register .social-icons li.social-icons-twitter a {
+    background-color: #00ACEE;
+  }
+  .oxyy-login-register .social-icons.social-icons-rounded li a {
+    border-radius: 0.25rem;
+  }
+  
+  .oxyy-login-register .social-icons li {
+    margin: 0px 6px 4px;
+    padding: 0;
+    overflow: visible;
+  }
+  .oxyy-login-register .social-icons li.social-icons-google a {
+    background-color: #DB4437;
+  }
+  .oxyy-login-register .social-icons li i {
+    line-height: inherit;
+  }
+  
+  .oxyy-login-register .social-icons li a {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #000;
+  }
+  
+  .oxyy-login-register .social-icons li.social-icons-linkedin a {
+    background-color: #0E76A8;
+  }
+  
+  form {
+    padding: 0;
+    margin: 0;
+    display: inline;
+  }
+  .oxyy-login-register .icon-group {
+    position: relative;
+  }
+  .oxyy-login-register .form-border .icon-group .form-control {
+    padding-left: 30px !important;
+  }
+  
+  .oxyy-login-register .form-border .icon-group .icon-inside {
+    color: rgba(0, 0, 0, 0.25);
+    width: 30px;
+    height: 52px;
+    display: flex;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    -ms-flex-pack: start !important;
+    justify-content: start !important;
+  }
+  .oxyy-login-register .icon-group .icon-inside {
+    position: absolute;
+    width: 50px;
+    height: 54px;
+    left: 0;
+    top: 3px;
+    pointer-events: none;
+    font-size: 18px;
+    font-size: 1.125rem;
+    color: #c4c3c3;
+    z-index: 3;
+    display: flex;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    -ms-flex-pack: center !important;
+    justify-content: center !important;
+  }
+  .oxyy-login-register .text-primary, .oxyy-login-register .link-primary, .oxyy-login-register .btn-link {
+    color: #c8377f !important;
+  }
+  
+  .oxyy-login-register .btn:not(.btn-link) {
+    box-shadow: 0px 5px 15px rgb(0 0 0 / 15%);
+    font-size: 16px;
+  }
+  .oxyy-login-register .btn-primary {
+    background-color: #d63384;
+    border-color: #d63384;
+  }
+  .oxyy-login-register .btn {
+    padding: 1.2rem 2.6rem;
+    font-weight: 500;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+  .fa-facebook-f:before {
+    color: white;
+  }
+  .fa-twitter:before {
+    color: white;
+  }
+  .fa-google:before {
+    color: white;
+  }
+  .fa-linkedin-in:before {
+    color: white;
+  }
+  .fa-envelope:before {
+    color: #d63384 !important;
+  }
+  .fa-user:before {
+    color: #d63384 !important;
+  }
+  .fa-lock:before {
+    color: #d63384 !important;
+  }
