@@ -64,5 +64,21 @@
       "category": "Medium",
       "id": 12
     }
+  ],
+  "news": [
+    {
+      "title": "Bete Lambosa",
+      "disc": "Loreme fe esdfsdf sdgsd",
+      "Details": "Lorem sfdaddsgsdgd",
+      "category": "Sport",
+      "id": 11
+    },
+    {
+      "title": "one news",
+      "disc": "one disc",
+      "details": "one details",
+      "category": "Politics",
+      "id": 12
+    }
   ]
 }

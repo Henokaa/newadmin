@@ -14,6 +14,7 @@ import { format } from 'date-fns'
 import Avatar from '@material-ui/core/Avatar'
 import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
 import AddIcon from '@material-ui/icons/Add';
+import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 
 const drawerWidth = 240
 
@@ -69,6 +70,11 @@ export default function Layout({ children }) {
       text: 'Create News', 
       icon: <AddIcon color="secondary" />, 
       path: '/createnews' 
+    },
+    { 
+      text: 'News', 
+      icon: <FormatListBulletedIcon color="secondary" />, 
+      path: '/news' 
     },
     { 
       text: 'Create Tasks', 

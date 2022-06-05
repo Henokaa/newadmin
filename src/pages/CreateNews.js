@@ -46,7 +46,7 @@ export default function CreateNews() {
       fetch('http://localhost:8000/news', {
         method: 'POST',
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify({ title, details, category })
+        body: JSON.stringify({ title, disc, details, category })
       }).then(() => history.push('/'))
     } 
   }

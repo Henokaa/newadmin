@@ -12,6 +12,7 @@ import Login from './pages/Login'
 import { Redirect } from "react-router-dom"
 import blue from '@material-ui/core/colors/blue';
 import CreateNews from './pages/CreateNews'
+import News from './pages/News'
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -48,6 +49,9 @@ function Application() {
             </Route>
             <Route path="/createnews">
               <CreateNews />
+            </Route>
+            <Route path="/news">
+              <News />
             </Route>
             <Route path="/tickets">
               <Tickets />
