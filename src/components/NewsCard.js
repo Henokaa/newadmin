@@ -12,6 +12,7 @@ import { makeStyles } from '@material-ui/core'
 import Avatar from '@material-ui/core/Avatar'
 import { yellow, green, pink, blue } from '@material-ui/core/colors'
 import Button from '@material-ui/core/Button';
+import { ImageSearchSharp } from '@material-ui/icons';
 
 const useStyles = makeStyles({
     root: {
@@ -20,18 +21,43 @@ const useStyles = makeStyles({
     media: {
       height: 140,
     },
+    images: {
+         backgroundImage: (news) => {
+            if (news.category === 'Sport') {
+              return "/sport.jpg"
+            }
+            if (news.category === 'Politics') {
+              return "/politics.png"
+            }
+            if (news.category === 'Economics') {
+              return 
+            }
+            return 
+          },
+    }
   });
+  function imagess(news){
+    if (news.category === 'Sport') {
+        return "/sport.jpg"
+      }
+      if (news.category === 'Politics') {
+        return "/politics.jpg"
+      }
+      if (news.category === 'Economics') {
+        return "/economics.jpg"
+      }
+      return "/alert.PNG"
+    }
 
 export default function NewsCard({ news, handleDelete }) {
     const classes = useStyles();
-
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={imagess(news)}
           title="Contemplative Reptile"
         />
         <CardContent>
