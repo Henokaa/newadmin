@@ -67,6 +67,11 @@ export default function Layout({ children }) {
       path: '/' 
     },
     { 
+      text: 'Users', 
+      icon: <AddIcon color="secondary" />, 
+      path: '/users' 
+    },
+    { 
       text: 'Create News', 
       icon: <AddIcon color="secondary" />, 
       path: '/createnews' 

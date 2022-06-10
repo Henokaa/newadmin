@@ -80,5 +80,12 @@
       "category": "Politics",
       "id": 12
     }
+  ],
+  "contacts": [
+    {
+      "id": "b715e98b-409a-4e29-a2d4-4776125369e6",
+      "name": "sd",
+      "email": "sF"
+    }
   ]
 }
