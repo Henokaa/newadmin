@@ -65,9 +65,9 @@ const ContactList = (props) => {
             </div>
         </Paper>
       <h2>
-        Contact List
+        Lesan Admins
         <Link to="/add">
-          <button className="ui button blue right">Add Contact</button>
+          <button className="ui button blue right">Add Employee</button>
         </Link>
       </h2>
       <div className="ui celled list">{renderContactList}</div>

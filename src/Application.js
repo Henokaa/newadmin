@@ -20,6 +20,7 @@ import AddContact from './components/AddContact';
 import ContactDetail from './components/ContactDetail';
 import ContactList from './components/ContactList';
 import EditContact from './components/EditContact';
+import Home from './pages/Home'
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -98,7 +99,10 @@ function Application() {
       <Router>
         <Layout>
           <Switch>
-            <Route exact path="/">
+          <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/notes">
               <Notes/>
             </Route>
             <Route exact path="/create">

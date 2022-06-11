@@ -71,21 +71,32 @@ export default function Layout({ children }) {
       icon: <AddIcon color="secondary" />, 
       path: '/users' 
     },
-    { 
-      text: 'Create News', 
-      icon: <AddIcon color="secondary" />, 
-      path: '/createnews' 
-    },
+ 
     { 
       text: 'News', 
       icon: <FormatListBulletedIcon color="secondary" />, 
       path: '/news' 
     },
+
+    { 
+      text: 'Create News', 
+      icon: <AddIcon color="secondary" />, 
+      path: '/createnews' 
+    },
+
+  
+    { 
+      text: 'Tasks', 
+      icon: <FormatListBulletedIcon color="secondary" />, 
+      path: '/notes' 
+    },
+
     { 
       text: 'Create Tasks', 
       icon: <AddCircleOutlineOutlined color="secondary" />, 
       path: '/create' 
     },
+    
     { 
       text: 'Tickets', 
       icon: <SubjectOutlined color="secondary" />,  

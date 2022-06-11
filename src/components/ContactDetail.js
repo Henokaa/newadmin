@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import user from "../images/user.jpg";
+import user from "../images/devbadge.png";
 
 const ContactDetail = (props) => {
   const { name, email } = props.location.state.contact;
@@ -16,9 +16,9 @@ const ContactDetail = (props) => {
         </div>
       </div>
       <div className="center-div">
-        <Link to="/">
+        <Link to="/users">
           <button className="ui button blue center">
-            Back to Contact List
+            Back
           </button>
         </Link>
       </div>
