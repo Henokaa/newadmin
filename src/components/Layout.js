@@ -33,10 +33,10 @@ const useStyles = makeStyles((theme) => {
     },
     drawerPaper: {
       width: drawerWidth,
-      backgroundColor: '#d5d5d5',
+      backgroundColor: '#f0f8ff',
     },
     active: {
-      background: '#f4f4f4'
+      background: '#ffffff'
     },
     title: {
       padding: theme.spacing(2),

@@ -47,7 +47,7 @@ export default function CreateNews() {
         method: 'POST',
         headers: {"Content-type": "application/json"},
         body: JSON.stringify({ title, disc, details, category })
-      }).then(() => history.push('/'))
+      }).then(() => history.push('/news'))
     } 
   }
 

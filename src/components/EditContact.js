@@ -14,12 +14,12 @@ class EditContact extends React.Component {
   update = (e) => {
     e.preventDefault();
     if (this.state.name === "" || this.state.email === "") {
-      alert("ALl the fields are mandatory!");
+      alert("ALL the fields are mandatory!");
       return;
     }
     this.props.updateContactHandler(this.state);
     this.setState({ name: "", email: "" });
-    this.props.history.push("/");
+    this.props.history.push("/users");
   };
   render() {
     return (

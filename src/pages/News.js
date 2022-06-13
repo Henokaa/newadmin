@@ -44,7 +44,7 @@ export default function News({ authorized }) {
         columnClassName="my-masonry-grid_column">
         {news.map(news => (
           <div key={news.id}>
-            <NewsCard news={news} handleDelete={handleDelete} />
+            <NewsCard news={news} setNews = {setNews} handleDelete={handleDelete} />
           </div>
         ))}
       </Masonry>
