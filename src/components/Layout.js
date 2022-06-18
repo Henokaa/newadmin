@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core'
 import Drawer from '@material-ui/core/Drawer'
 import Typography from '@material-ui/core/Typography'
@@ -15,6 +15,10 @@ import Avatar from '@material-ui/core/Avatar'
 import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers'
 import AddIcon from '@material-ui/icons/Add';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import IconButton from '@material-ui/core/IconButton';
+import Button from '@material-ui/core/Button';
+import { LoginContext } from "../Contexts/LoginContext"
 
 const drawerWidth = 240
 
@@ -50,7 +54,7 @@ const useStyles = makeStyles((theme) => {
     },
     toolbar: theme.mixins.toolbar,
     avatar: {
-      marginLeft: theme.spacing(2)
+      marginTop: "7px",
     }
   }
 })
@@ -59,6 +63,14 @@ export default function Layout({ children }) {
   const classes = useStyles()
   const history = useHistory()
   const location = useLocation()
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const { setShowProfile } = useContext(LoginContext);
+
+  const handleProfileMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  
 
   const menuItems = [
     { 
@@ -127,7 +139,16 @@ export default function Layout({ children }) {
             Lesan 
           </Typography>
           <Typography>HenokF</Typography>
-          <Avatar className={classes.avatar} src="/henok.jpg" />
+          <Button className={classes.avatar} variant="text" onClick= {() => {setShowProfile(false)}}>Logout</Button>
+          {/* <Avatar src="./image/user.png" /> */}
+          <IconButton
+              edge="end"
+              aria-label="account of current user"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
         </Toolbar>
       </AppBar>
 

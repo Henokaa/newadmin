@@ -28,6 +28,7 @@ export default function Tickets() {
   return (
     <Container>
       <Grid container spacing={3}>
+        
         {Ticket.map(ticket => (
           <Grid item xs={12} key={ticket.id}>
             <TicketCard ticket={ticket} handleDelete={handleDelete} />

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import ReactApexChart from "react-apexcharts";
 import BarChart from "../components/BarChart";
@@ -6,45 +6,59 @@ import BarChart from "../components/BarChart";
 import { Grid, Container, Typography } from '@material-ui/core';
 import AppWidgetSummary from "../components/AppWidgetSummary";
 import { Box } from '@material-ui/core';
-class Home extends Component {
-    constructor(props) {
-        super(props);
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+import 'chart.js/auto';
+import Areachart from '../pages/Areachart'
 
-        this.state = {
-        
-          series: [{
-            name: 'series1',
-            data: [31, 40, 28, 51, 42, 109, 100]
-          }, {
-            name: 'series2',
-            data: [11, 32, 45, 32, 34, 52, 41]
-          }],
-          options: {
-            chart: {
-              height: 350,
-              type: 'area'
-            },
-            dataLabels: {
-              enabled: false
-            },
-            stroke: {
-              curve: 'smooth'
-            },
-            xaxis: {
-              type: 'datetime',
-              categories: ["2018-09-19T00:00:00.000Z", "2018-09-19T01:30:00.000Z", "2018-09-19T02:30:00.000Z", "2018-09-19T03:30:00.000Z", "2018-09-19T04:30:00.000Z", "2018-09-19T05:30:00.000Z", "2018-09-19T06:30:00.000Z"]
-            },
-            tooltip: {
-              x: {
-                format: 'dd/MM/yy HH:mm'
-              },
-            },
-          },
-        
-        
-        };
-      }
-  render() {
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+);
+export const options = {
+  indexAxis: 'y',
+  elements: {
+      bar: {
+          borderWidth: 2,
+      },
+  },
+  responsive: true,
+  plugins: {
+      legend: {
+          position: 'right',
+      },
+      title: {
+          display: true,
+          text: 'Chart.js Horizontal Bar Chart',
+      },
+  },
+};
+const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+export const data = {
+  labels,
+  datasets: [
+      {
+          label: 'Dataset 1',
+          data: [12, 55, 34, 120, 720, 550, 300],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+  ],
+};
+function Home() {
+    
     return (
       <div>
       <Box title="Dashboard">
@@ -55,19 +69,42 @@ class Home extends Component {
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={6} md={3}>
-            <AppWidgetSummary title="Weekly Sales" total={714000} icon={'ant-design:android-filled'} />
+            <AppWidgetSummary title="Weekly Sales" total={714000} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Monthly Sales" total={824000} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Yearly Sales" total={934000} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={3}>
+            <AppWidgetSummary title="Yearly Sales" total={434000} />
+          </Grid>
+          <Grid item xs={12} sm={12} md={12}>
+          <div id="chart">
+        <Areachart/>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12}>
+          <Bar options={options} data={data} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <BarChart/>
+          </Grid>
+          <Grid item xs={12} md={6} lg={6}>
+            
           </Grid>
           </Grid>
         </Container>
         </Box>
         
-        <div id="chart">
-        <ReactApexChart options={this.state.options} series={this.state.series} type="area" height={350} />
-        <BarChart/>
-      </div>
+        
+        
+        
+        
+        
       </div>
     );
   }
-}
 
 export default Home;
