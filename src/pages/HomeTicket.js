@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   }
 })); 
 
-export default function Tickets() {
+export default function HomeTicket() {
   const classes = useStyles();
   const [Ticket, setTicket] = useState([]);
 
@@ -88,21 +88,7 @@ export default function Tickets() {
 
   return (
      <div>
-      <Grid container spacing={3}>
-          <Grid item xs={12} sm={6} md={8}>
-    <Typography variant="h4" gutterBottom>
-            Tickets
-          </Typography>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4} style={{float: "right"}}>
-          <Link to="/createticket">
-          <Button variant="contained"  to="/createticket" style={{backgroundColor:"#103996", color: "#f9fafd", float: "right"}}>
-            <AddIcon />
-            New Ticket
-          </Button>
-          </Link>
-          </Grid>
-      </Grid>
+      
     <TableContainer component={Paper} className={classes.tableContainer}>
     <Table className={classes.table} aria-label="simple table">
       <TableHead>
@@ -122,7 +108,7 @@ export default function Tickets() {
       </TableBody>
         <TableFooter>
         <TablePagination
-            rowsPerPageOptions={[5, 10, 15]}
+            rowsPerPageOptions={[3]}
             component="div"
             
             rowsPerPage={rowsPerPage}

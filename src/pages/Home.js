@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import Chart from "react-apexcharts";
 import ReactApexChart from "react-apexcharts";
 import BarChart from "../components/BarChart";
+import SiteTraffic from "./SiteTraffic";
 
 import { Grid, Container, Typography } from '@material-ui/core';
 import AppWidgetSummary from "../components/AppWidgetSummary";
@@ -18,7 +19,8 @@ import {
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import Areachart from '../pages/Areachart'
-
+import Tickets from './Tickets'
+import HomeTicket from './HomeTicket'
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -67,7 +69,13 @@ function Home() {
           Welcome Back, Lesan Admin
         </Typography>
 
+        
         <Grid container spacing={3}>
+        <Grid item xs={12} sm={12} md={12}>
+          <div id="chart">
+        <Areachart/>
+            </div>
+          </Grid>
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Weekly Sales" total={714000} />
           </Grid>
@@ -80,11 +88,7 @@ function Home() {
           <Grid item xs={12} sm={6} md={3}>
             <AppWidgetSummary title="Yearly Sales" total={434000} />
           </Grid>
-          <Grid item xs={12} sm={12} md={12}>
-          <div id="chart">
-        <Areachart/>
-            </div>
-          </Grid>
+          
           <Grid item xs={12} sm={12} md={12}>
           <Bar options={options} data={data} />
           </Grid>
@@ -92,15 +96,14 @@ function Home() {
             <BarChart/>
           </Grid>
           <Grid item xs={12} md={6} lg={6}>
-            
+            <SiteTraffic/>
+          </Grid>
+          <Grid item xs={12} md={12} lg={12}>
+            <HomeTicket />
           </Grid>
           </Grid>
         </Container>
         </Box>
-        
-        
-        
-        
         
         
       </div>
