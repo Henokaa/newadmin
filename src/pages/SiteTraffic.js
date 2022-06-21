@@ -9,8 +9,12 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import { Grid, Container } from '@material-ui/core';
 import  { fShortenNumber }  from '../components/formatNumber'
 import Paper from '@material-ui/core/Paper';
+import FacebookIcon from '@material-ui/icons/Facebook'
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import TwitterIcon from '@material-ui/icons/Twitter';
 function SiteTraffic() {
     return ( 
+        <div>
         <Card>
       <CardHeader title="Traffic by Site" />
 
@@ -18,52 +22,60 @@ function SiteTraffic() {
         <Box
           sx={{
             display: 'grid',
-            gap: 2,
+            gap: 10,
             gridTemplateColumns: 'repeat(2, 1fr)',
           }}
         >
           
             {/* <Paper key={site.name} variant="outlined" sx={{ py: 2.5, textAlign: 'center' }}> */}
-            <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={6}>
-              <GitHubIcon/>
-              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                GitHub
-              </Typography>
-              </Grid>
+            <Paper  variant="outlined" sx={{ py: 2.5, textAlign: 'center' }} style={{textAlign: "center", padding: "10.5px"}}>
+              <Box sx={{ mb: 0.5 }}><GitHubIcon/></Box>
 
-              <Grid item xs={12} sm={6} md={6}>
-              <GitHubIcon/>
               <Typography variant="h6">{fShortenNumber(3000)}</Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                GitHub
-              </Typography>
-              </Grid>
-            
 
-            <Grid item xs={12} sm={6} md={6}>
-              <GitHubIcon/>
-              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                GitHub
+                Facebook
               </Typography>
-              </Grid>
-            
-              <Grid item xs={12} sm={6} md={6}>
-              <GitHubIcon/>
-              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                GitHub
-              </Typography>
-              </Grid>
-            </Grid>
+            </Paper>
+            <Paper  variant="outlined" sx={{ py: 2.5, textAlign: 'center' }} style={{textAlign: "center", padding: "10.5px"}}>
+              <Box sx={{ mb: 0.5 }}><FacebookIcon/></Box>
 
+              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Google
+              </Typography>
+            </Paper>
+
+            <Paper  variant="outlined" sx={{ py: 2.5, textAlign: 'center' }} style={{textAlign: "center", padding: "10.5px"}}>
+              <Box sx={{ mb: 0.5 }}><LinkedInIcon/></Box>
+
+              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                LinkedIn
+              </Typography>
+            </Paper>
+
+            <Paper  variant="outlined" sx={{ py: 2.5, textAlign: 'center' }} style={{textAlign: "center", padding: "10.5px"}}>
+              <Box sx={{ mb: 0.5 }}><TwitterIcon /></Box>
+
+              <Typography variant="h6">{fShortenNumber(3000)}</Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                Twitter
+              </Typography>
+            </Paper>
+            </Box>
+
+            </CardContent>
+    </Card>    
+         
             {/* </Paper> */}
          
-        </Box>
-      </CardContent>
-    </Card>
+       
+      
+    </div>
      );
 }
 

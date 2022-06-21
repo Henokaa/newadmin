@@ -1,25 +1,25 @@
 {
   "notes": [
     {
-      "title": "Yoshi's birthday bash",
+      "title": "Design Mockup",
       "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "category": "reminders",
       "id": 1
     },
     {
-      "title": "Complete my ninja training",
+      "title": "user testing",
       "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took.",
       "category": "work",
       "id": 2
     },
     {
-      "title": "Order a pizza!",
+      "title": "Analysis",
       "details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
       "category": "todos",
       "id": 3
     },
     {
-      "title": "Buy Yoshi's Birthday Gift",
+      "title": "Q & A",
       "details": "Mario ipsum RGB mushroom 1-up. Cloud lakitu slide fire flower pipe jump swim, lava slide koopa troopa side-scrolling starman fire bar koopa paratroopa! Pipe cloud buzzy beetle koopa troopa game over, goomba invincible Mario green shell slide koopa paratroopa fire bar question block 1985 koopa troopa fireball Mushroom Kingdom. Lava Mushroom Kingdom.",
       "category": "todos",
       "id": 4
@@ -29,30 +29,6 @@
       "details": "Mario ipsum RGB mushroom 1-up. Cloud lakitu slide fire flower pipe jump swim, lava slide koopa troopa side-scrolling starman fire bar koopa paratroopa! Pipe cloud buzzy beetle koopa troopa game over, goomba invincible Mario green shell slide koopa paratroopa fire bar question block 1985 koopa troopa fireball Mushroom Kingdom. Lava Mushroom Kingdom.",
       "category": "reminders",
       "id": 6
-    },
-    {
-      "title": "Henok",
-      "details": "Details",
-      "category": "reminders",
-      "id": 8
-    },
-    {
-      "title": "Henok2",
-      "details": "Details",
-      "category": "todos",
-      "id": 9
-    },
-    {
-      "title": "naew",
-      "details": "das",
-      "category": "todos",
-      "id": 10
-    },
-    {
-      "title": "Hamtamu title",
-      "details": "details skfkdgldmlgmdslm",
-      "category": "reminders",
-      "id": 11
     }
   ],
   "tickets": [
@@ -97,6 +73,11 @@
       "id": "4f64cc8b-467e-41a8-9617-a97b03505daf",
       "name": "fasica",
       "email": "autumndwyer@me.com"
+    },
+    {
+      "id": "eb27e135-d27f-4c28-a899-58c29e37b6a0",
+      "name": "Gedion",
+      "email": "Geme73@ppp998.com"
     }
   ]
 }
