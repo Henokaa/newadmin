@@ -57,6 +57,9 @@ const useStyles = makeStyles((theme) => ({
       marginLeft: theme.spacing(2),
       flex: 1,
     },
+    disc: {
+      fontWeight: "Bold",
+    }
   }));
 
   function imagess(news){
@@ -102,7 +105,7 @@ export default function NewsCard({ news, setNews, handleDelete }) {
           <Typography gutterBottom variant="h5" component="h2">
             {news.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" style={{fontWeight: "bold"}}>
             {news.disc}
           </Typography>
         </CardContent>
@@ -127,7 +130,7 @@ export default function NewsCard({ news, setNews, handleDelete }) {
               <CloseIcon />
             </IconButton>
             <Typography variant="h6" className={classes.title}>
-              Sound
+              Close
             </Typography>
             <Button autoFocus color="inherit" onClick={handleClose}>
               save
@@ -155,11 +158,11 @@ export default function NewsCard({ news, setNews, handleDelete }) {
           <Typography gutterBottom variant="h5" component="h2">
             {news.title}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography variant="body2" color="textSecondary" component="p" style={{fontWeight: "bold", fontSize: "16px"}}>
             {news.disc}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            {news.Details}
+            {news.content}
           </Typography>
         </CardContent>
       </CardActionArea>

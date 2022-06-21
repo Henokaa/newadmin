@@ -26,7 +26,7 @@ export default function CreateNews() {
   const history = useHistory()
   const [title, setTitle] = useState('')
   const [disc, setDisc] = useState('')
-  const [details, setDetails] = useState('')
+  const [content, setContent] = useState('')
   const [titleError, setTitleError] = useState(false)
   const [detailsError, setDetailsError] = useState(false)
   const [category, setCategory] = useState('todos')
@@ -39,14 +39,14 @@ export default function CreateNews() {
     if (title === '') {
       setTitleError(true)
     }
-    if (details === '') {
+    if (content === '') {
       setDetailsError(true)
     }
-    if (title && details) {
+    if (title && content) {
       fetch('http://localhost:8000/news', {
         method: 'POST',
         headers: {"Content-type": "application/json"},
-        body: JSON.stringify({ title, disc, details, category })
+        body: JSON.stringify({ title, disc, content, category })
       }).then(() => history.push('/news'))
     } 
   }
@@ -82,7 +82,7 @@ export default function CreateNews() {
           error={titleError}
         />
         <TextField className={classes.field}
-          onChange={(e) => setDetails(e.target.value)}
+          onChange={(e) => setContent(e.target.value)}
           label="Details"
           variant="outlined"
           color="secondary"

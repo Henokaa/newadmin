@@ -19,7 +19,11 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button';
 import { LoginContext } from "../Contexts/LoginContext"
-
+import BookOutlinedIcon from '@material-ui/icons/BookOutlined';
+import CreateIcon from '@material-ui/icons/Create';
+import AppsIcon from '@material-ui/icons/Apps';
+import HomeIcon from '@material-ui/icons/Home';
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 const drawerWidth = 240
 
 const useStyles = makeStyles((theme) => {
@@ -75,7 +79,7 @@ export default function Layout({ children }) {
   const menuItems = [
     { 
       text: 'Home', 
-      icon: <SubjectOutlined color="secondary" />, 
+      icon: <HomeIcon color="secondary" />, 
       path: '/' 
     },
     { 
@@ -86,20 +90,20 @@ export default function Layout({ children }) {
  
     { 
       text: 'News', 
-      icon: <FormatListBulletedIcon color="secondary" />, 
+      icon: <BookOutlinedIcon color="secondary" />, 
       path: '/news' 
     },
 
     { 
       text: 'Create News', 
-      icon: <AddIcon color="secondary" />, 
+      icon: <CreateIcon color="secondary" />, 
       path: '/createnews' 
     },
 
   
     { 
       text: 'Tasks', 
-      icon: <FormatListBulletedIcon color="secondary" />, 
+      icon: <AppsIcon color="secondary" />, 
       path: '/notes' 
     },
 
@@ -116,7 +120,7 @@ export default function Layout({ children }) {
     },
     { 
       text: 'Create Tickets', 
-      icon: <AddIcon color="secondary" />, 
+      icon: <ConfirmationNumberIcon color="secondary" />, 
       path: '/createticket' 
     },
  
