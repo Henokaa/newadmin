@@ -1,9 +1,78 @@
-import React, {useState, useContext } from "react";
+import React, {useState, useContext, Component } from "react";
 import { LoginContext } from "../Contexts/LoginContext"
 import loginstyle from "../Styles/loginstyle.css"
-function Login() {
-    const { setShowProfile } = useContext(LoginContext);
 
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { register } from '../actions/authActions';
+import { clearErrors } from '../actions/errorActions';
+import { makeStyles } from '@material-ui/core/styles';
+import Alert from '@material-ui/lab/Alert';
+class Login extends Component  {
+  state = {
+    modal: false,
+    name: '',
+    email: '',
+    password: '',
+    msg: null
+  };
+
+  static propTypes = {
+    isAuthenticated: PropTypes.bool,
+    error: PropTypes.object.isRequired,
+    register: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired
+  };
+
+  componentDidUpdate(prevProps) {
+    const { error, isAuthenticated } = this.props;
+    if (error !== prevProps.error) {
+      // Check for register error
+      if (error.id === 'REGISTER_FAIL') {
+        // this.setState({ msg: error.msg.msg });
+        this.setState({ msg: "Admin validation failed."});
+      } else {
+        this.setState({ msg: null });
+      }
+    }
+
+    // If authenticated, close modal
+    if (this.state.modal) {
+      if (isAuthenticated) {
+        this.toggle();
+      }
+    }
+  }
+
+  toggle = () => {
+    // Clear errors
+    this.props.clearErrors();
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+
+    const { name, email, password } = this.state;
+
+    // Create user object
+    const newUser = {
+      name,
+      email,
+      password
+    };
+
+    // Attempt to register
+    this.props.register(newUser);
+  };
+
+  render() {
     return (   
         <div>
         <div id="main-wrapper" class="oxyy-login-register" style={{backgroundColor: "#dc3545"}}>
@@ -32,15 +101,18 @@ function Login() {
             <div class="container my-auto py-4 bg-white shadow-lg rounded">
               <div class="row mt-2">
                 <div class="col-11 col-lg-11 mx-auto">
-                  <form id="registerForm" class="form-border" method="post" onSubmit= {() => {setShowProfile(true)}}>
+                  <form id="registerForm" class="form-border" method="post" onSubmit={this.onSubmit}>
+                  {this.state.msg ? (
+               <Alert severity="warning">{this.state.msg}</Alert>
+            ) : null}
                     <div class="form-group icon-group">
-                      <input type="text" class="form-control" id="fullName" required placeholder="Full Name" />
+                      <input type="text" name='name' class="form-control" id="fullName" required placeholder="Full Name" onChange={this.onChange}/>
                       <span class="icon-inside text-primary"><i class="fas fa-user"></i></span> </div>
                     <div class="form-group icon-group">
-                      <input type="email" class="form-control" id="emailAddress" required placeholder="Email Address" />
+                      <input type="email" name='email'  class="form-control" id="emailAddress" required placeholder="Email Address" onChange={this.onChange}/>
                       <span class="icon-inside text-primary"><i class="fas fa-envelope"></i></span> </div>
                     <div class="form-group icon-group">
-                       <input type="password" class="form-control" id="loginPassword" required placeholder="Password" />
+                       <input type="password"  name='password' class="form-control" id="loginPassword" required placeholder="Password" onChange={this.onChange}/>
                       <span class="icon-inside text-primary"><i class="fas fa-lock"></i></span> </div>
                     <button class="btn btn-primary btn-block text-uppercase mt-4">Sign Up</button>
                   </form>
@@ -71,5 +143,13 @@ function Login() {
     </div>
     );
 }
+}
 
-export default Login;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated,
+  error: state.error
+});
+export default connect(
+  mapStateToProps,
+  { register, clearErrors }
+)(Login);
