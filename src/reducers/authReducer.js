@@ -8,7 +8,7 @@ import {
     REGISTER_SUCCESS,
     REGISTER_FAIL
   } from '../actions/types';
-  
+  // localStorage, action.payload
   const initialState = {
     token: localStorage.getItem('token'),
     isAuthenticated: null,
@@ -35,7 +35,7 @@ import {
         localStorage.setItem('token', action.payload.token);
         return {
           ...state,
-          ...action.payload,
+          ...action.payload,  // token is in the payload
           isAuthenticated: true,
           isLoading: false
         };

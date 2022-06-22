@@ -6,13 +6,13 @@ import { LoginContext } from "./Contexts/LoginContext"
 
 import { Provider } from 'react-redux';
 import store from './store';
-// import { loadUser } from './actions/authActions';
+ import { loadUser } from './actions/authActions';
 function App() {
   const [showProfile, setShowProfile] = useState(false);
 
-  // useEffect(() => {
-  //   store.dispatch(loadUser());
-  //   })
+  useEffect(() => {
+    store.dispatch(loadUser());
+    })
   return (
   <Provider store={store}>
   <LoginContext.Provider value = {{ setShowProfile, showProfile }}>
