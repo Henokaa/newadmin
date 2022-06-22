@@ -6,6 +6,7 @@ import Tickets from './pages/Tickets'
 import { createMuiTheme, ThemeProvider } from '@material-ui/core'
 import { purple } from '@material-ui/core/colors'
 import Layout from './components/Layout'
+import Layouttwo from './components/Layouttwo'
 import React, {useState, useContext, useEffect } from "react";
 import { LoginContext } from "./Contexts/LoginContext"
 import Login from './pages/Login'
@@ -21,6 +22,9 @@ import ContactDetail from './components/ContactDetail';
 import ContactList from './components/ContactList';
 import EditContact from './components/EditContact';
 import Home from './pages/Home';
+import Signin from './pages/Signin';
+
+
 
 import NewUpdate from './components/NewUpdate'
 const theme = createMuiTheme({
@@ -96,9 +100,24 @@ function Application() {
     const { showProfile } = useContext(LoginContext);
   return (
       <div>
-          {showProfile ? (
           <ThemeProvider theme={theme}>
       <Router>
+      <Switch>
+      <Route path={['/Login', '/signin']}>
+      <Layouttwo>
+            <Switch>
+            <Route exact path="/Login">
+              <Login />
+            </Route>
+            <Route exact path="/signin">
+              <Signin />
+            </Route>
+            </Switch>
+        </Layouttwo>
+        </Route>
+           
+           
+       <Route>
         <Layout>
           <Switch>
           <Route exact path="/">
@@ -158,12 +177,14 @@ function Application() {
 
           </Switch>
         </Layout>
+        </Route>
+        </Switch>
       </Router>
     </ThemeProvider>
-    ):
+    {/* ):
            (
             <Login/>
-    )}
+    )} */}
     </div>
 
   );

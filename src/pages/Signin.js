@@ -4,79 +4,81 @@ import loginstyle from "../Styles/loginstyle.css"
 
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { register } from '../actions/authActions';
+import { login } from '../actions/authActions';
 import { clearErrors } from '../actions/errorActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Alert from '@material-ui/lab/Alert';
-import Signin from "./Signin";
-import { Link } from "react-router-dom";
-class Login extends Component  {
-  state = {
-    modal: false,
-    name: '',
-    email: '',
-    password: '',
-    msg: null
-  };
+import {Link ,useNavigate} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
+import { Redirect } from 'react-router'
+import { withRouter } from 'react-router-dom';
 
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
-    clearErrors: PropTypes.func.isRequired
-  };
+class Signin extends Component  {
+    
+    state = {
+        modal: false,
+        email: '',
+        password: '',
+        msg: null
+      };
+    
+      static propTypes = {
+        isAuthenticated: PropTypes.bool,
+        error: PropTypes.object.isRequired,
+        login: PropTypes.func.isRequired,
+        clearErrors: PropTypes.func.isRequired
+      };
+    
+     
+      componentDidUpdate(prevProps) {
+        const { error, isAuthenticated } = this.props;
+        if (error !== prevProps.error) {
+          // Check for register error
+           if (error.id === 'LOGIN_FAIL') {
+            // this.setState({ msg: "Admin validation failed."});
+           this.setState({ msg: error.msg.message });
+          } else {
+            this.setState({ msg: null });
+          }
+        }
+    
+        // If authenticated, close modal
+        
+          
+        //   const user = this.props.setShowProfile(true)
 
-  componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
-    if (error !== prevProps.error) {
-      // Check for register error
-      if (error.id === 'REGISTER_FAIL') {
-        // this.setState({ msg: error.msg.msg });
-        // this.setState({ msg: "Admin validation failed."});
-        this.setState({ msg: error.msg.message });
-      } else {
-        this.setState({ msg: null });
+        //   console.log(user) 
       }
-    }
+    
+      toggle = () => {
+        // Clear errors
+        this.props.clearErrors();
+        this.setState({
+          modal: !this.state.modal
+        });
+      };
+    
+      onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+    
+      onSubmit = e => {
+        e.preventDefault();
+        const { error, isAuthenticated } = this.props;
+        const { email, password } = this.state;
+        const user = {
+          email,
+          password
+        };
 
-    // If authenticated, close modal
-    if (this.state.modal) {
-      if (isAuthenticated) {
-        this.toggle();
-      }
-    }
-  }
+        if (isAuthenticated) {
+            console.log("Logedin")
+            this.props.history.push("/notes"); 
+          }
+        // Attempt to login
+        this.props.login(user);
+      };
 
-  toggle = () => {
-    // Clear errors
-    this.props.clearErrors();
-    this.setState({
-      modal: !this.state.modal
-    });
-  };
-
-  onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-  onSignin = (e) => {
-    return <Signin/>
-  }
-
-  onSubmit = e => {
-    e.preventDefault();
-
-    const { name, email, password } = this.state;
-
-    // Create user object
-    const newUser = {
-      name,
-      email,
-      password
-    };
-
-    // Attempt to register
-    this.props.register(newUser);
-  };
 
   render() {
     return (   
@@ -88,10 +90,9 @@ class Login extends Component  {
       <div class="container pt-5">
         <div class="row">
           <div class="col-sm-6 text-uppercase text-4 text-white text-center text-sm-left" style={{fontSize: "18px"}}>Sign Up to Lesan</div>
-          <div class="col-sm-6 text-2 text-white font-weight-300 text-center text-sm-right"> Already a member? 
-       <Link to="/signin">
-      <a class="text-white text-3 font-weight-600" >Sign in</a> 
-      </Link>
+          {/* <div class="col-sm-6 text-2 text-white font-weight-300 text-center text-sm-right"> Already a member? <Link
+        to={{ pathname: `/signin` }}
+      ><a class="text-white text-3 font-weight-600" href="">Sign in</a> </Link> </div> */}
         </div>
       </div>
       <div class="container my-auto py-5">
@@ -99,7 +100,7 @@ class Login extends Component  {
           <div class="col-md-6 col-lg-7 col-xl-8">
             <div class="row d-flex h-100 text-center text-md-left">
               <div class="col-lg-9 col-xl-8 mt-auto">
-                <h1 class="text-13 font-weight-200 text-white mb-5" style={{fontWeight: "200" ,fontSize: "52px"}}>Welcome, Looks like you're new here!</h1>
+                <h1 class="text-13 font-weight-200 text-white mb-5" style={{fontWeight: "200" ,fontSize: "52px"}}>Welcome, back to Lesan!</h1>
               </div>
               <div class="col-lg-12 mx-auto mt-auto mb-4 mb-md-0">
                 <div class="logo" style={{fontFamily: "Rampart One" ,fontSize: "52px", color: "#ffffff"}}> LESAN </div>
@@ -114,16 +115,14 @@ class Login extends Component  {
                   {this.state.msg ? (
                <Alert severity="warning">{this.state.msg}</Alert>
             ) : null}
-                    <div class="form-group icon-group">
-                      <input type="text" name='name' class="form-control" id="fullName" required placeholder="Full Name" onChange={this.onChange}/>
-                      <span class="icon-inside text-primary"><i class="fas fa-user"></i></span> </div>
+                    
                     <div class="form-group icon-group">
                       <input type="email" name='email'  class="form-control" id="emailAddress" required placeholder="Email Address" onChange={this.onChange}/>
                       <span class="icon-inside text-primary"><i class="fas fa-envelope"></i></span> </div>
                     <div class="form-group icon-group">
                        <input type="password"  name='password' class="form-control" id="loginPassword" required placeholder="Password" onChange={this.onChange}/>
                       <span class="icon-inside text-primary"><i class="fas fa-lock"></i></span> </div>
-                    <button class="btn btn-primary btn-block text-uppercase mt-4">Sign Up</button>
+                    <button class="btn btn-primary btn-block text-uppercase mt-4">Log in</button>
                   </form>
                   <div class="d-flex align-items-center my-2">
                     <hr class="flex-grow-1"/> 
@@ -150,7 +149,6 @@ class Login extends Component  {
     </div>
       {/* <button className="sign-in" onClick={signInWithGoogle}>Sign in with Google</button> */}
     </div>
-    </div>
     );
 }
 }
@@ -159,7 +157,9 @@ const mapStateToProps = state => ({
   isAuthenticated: state.auth.isAuthenticated,
   error: state.error
 });
-export default connect(
+
+export default withRouter(connect(
   mapStateToProps,
-  { register, clearErrors }
-)(Login);
+  { login, clearErrors }
+)(Signin));
+

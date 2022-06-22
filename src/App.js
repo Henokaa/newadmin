@@ -7,18 +7,29 @@ import { LoginContext } from "./Contexts/LoginContext"
 import { Provider } from 'react-redux';
 import store from './store';
  import { loadUser } from './actions/authActions';
+ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+ import Signin from './pages/Signin';
+
+ import { useSelector, useDispatch } from 'react-redux';
+
 function App() {
   const [showProfile, setShowProfile] = useState(false);
 
+  const isLogged = true;
+  
   useEffect(() => {
     store.dispatch(loadUser());
+    console.log(isLogged)
     })
   return (
+
   <Provider store={store}>
   <LoginContext.Provider value = {{ setShowProfile, showProfile }}>
+  
   <div className="App">
-    {showProfile ? <Application/> : <Login />} 
+    <Application />
   </div>
+ 
   </LoginContext.Provider>
   </Provider>
   );
