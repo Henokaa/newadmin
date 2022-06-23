@@ -29,7 +29,7 @@ const AnalyticsChart = () => {
         title="Google Analytics Report"
         width="100%"
         height="600"
-        src="https://datastudio.google.com/embed/reporting/887a4ec9-9e41-4997-8ff3-7a4dc98fb1d5/page/4VDGB"
+        src="https://datastudio.google.com/embed/reporting/c7c43cbe-7aa0-4ce5-9343-290cde341d08/page/4VDGB"
         frameborder="0"
         allowfullscreen
       ></iframe>
