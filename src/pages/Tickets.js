@@ -103,7 +103,7 @@ export default function Tickets() {
     // fetch('http://lesan-admin-api.herokuapp.com/api/admins/tickets/list')
     //   .then(res => res.json())
     //   .then(data => setTicket(data))
-  }, [Ticket])
+  }, [])
 
   const handleDelete = async (id) => {
     await fetch('http://localhost:8000/tickets/' + id, {
