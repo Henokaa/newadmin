@@ -49,23 +49,23 @@
   ],
   "news": [
     {
-      "title": "Yen falls as Bank of Japan bucks rate rise trend",
-      "disc": "The yen has fallen sharply after Japan's central bank kept its ultra-low interest rates on hold as policy makers around the world hike the cost of borrowing to tackle rising prices.",
-      "Details": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+      "title": "በአለማችን አራተኛው ሰማይ ጠቀስ ህንጻ የሆነውና 601 ሜትር ቁመት",
+      "disc": "ህንጻ መገኛ የሆነችው ሳዑዲ አረቢያ በዘመናዊ ቴክኖሎጂ የተሟላችዋንና ለአለማቀፍ ቱሪስቶች መናኸሪያ እንድትሆን ያሰበቻትን ኒኦም ከተማ ለመገንባት ማቀዷን ለመጀመሪያ ጊዜ ይፋ ያደረገችው በ2017 ጥቅምት ወር ላይ እንደነበርም ዘገባው አስታውሷል፡፡ ",
+      "Details": "በአሁኑ ወቅት በአለማችን እጅግ ረጅሙ ህንጻ በዱባይ የሚገኘውና 828 ሜትር ቁመት ያለው ቡርጂ ከሊፋ መሆኑን የጠቆመው ዘገባው፣ ሳዑዲ አረቢያ በ2013 ላይም ሌላ ከዚህ ህንጻ የሚረዝም ጂዳ ታወር የተባለ ህንጻ መገንባት መጀመሯን ጨምሮ አስታውሷል፡፡",
       "category": "Sport",
       "id": 11
     },
     {
-      "title": "Cost of living: The shock of rising prices in Japan",
-      "disc": "After the announcement, the US dollar climbed as high as 134.64 yen, not far from the 24-year peak of 135.6 it hit earlier this week.",
-      "details": "So far this year the dollar has climbed by 15% against the yen, as the gap between interest rates in Japan and much of the rest of the world continues to grow.                                                                                                                                                                    ",
+      "title": "በአዲስ አበባ የዶሮ በሽታ ከፍተኛ ስጋት ፈጥሯል",
+      "disc": "በኢትዮጵያ የተለያዩ አካባቢዎች ተከሰተ የተባለው “ያልታወቀ” የዶሮ በሽታ ለአገሪቱ በተለይም በመዲናዋ አዲስ አበባ ከፍተኛ ስጋት ፈጥሯል። ",
+      "details": "በሽታው  በሰዎች ላይ ስለሚያስከትለው የጤና ችግር ለማወቅ ምርምር እያደረገ መሆኑንም የህብረተሰብ ጤና ኢንስቲቲዩት አስታውቋል። የግብርና ሚኒስቴር ሰኔ 3 ቀን 2014 ዓ.ም  በሰጠው መግለጫመሰረት፤ በዚሁ የዶሮ በሽታ ሳቢያ ከ50 ሺ በላይ ዶሮዎች መሞታቸውንም አስታውቋል። ",          
       "category": "Economics",
       "id": 12
     },
     {
-      "title": "Labour calls vote to give MPs power to appoint new ethics chief",
-      "disc": "Lord Geidt resigned from his role as ethics adviser on Wednesday",
-      "content": "Labour has called a vote which would give MPs the power to hold ministers to account if Boris Johnson's former ethics chief is not replaced.\n\nLord Geidt resigned on Wednesday after he said he was put in an \"impossible and odious\" position by the PM.",
+      "title": "ሳዑዲ አረቢያ የአለማችንን እጅግ ግዙፍ ህንጻዎች እየገነባች ነው",
+      "disc": "በ500 ቢሊዮን ዶላር ወጪ ሙሉ ለሙሉ በዘመናዊ ቴክኖሎጂ የተንቆጠቆጠች አዲስ ከተማ በመገንባት ላይ የምትገኘው ሳዑዲ አረቢያ፤ በከተማዋ የምትሰራቸው መንትያ ህንጻዎች በግዝፈታቸው አዲስ የአለም ክብረ ወሰን እንደሚያስመዘግቡ አስታውቃለች፡፡",
+      "content": "ሚኒስቴር መ/ቤቱ የበሽታው ምንነት ባለመታወቁና በሰዎች ላይ  የሚያስከትለው የጤና ችግር ባመለየቱ ምክንያት ከተለያዩ የክልል ከተሞች ወደ አዲስ አበባ በሚገቡና ከውጪ አገር በሚመጡ እንዲሁም ወደ ውጪ አገር ሊላኩ የተዘጋጁ እንቁላሎች፣ የተፈለፈሉ ጫጩቶችና ዶሮዎች ወደ ከተማው እንዳይገቡ አግዷል። ",
       "category": "Politics",
       "id": 13
     }

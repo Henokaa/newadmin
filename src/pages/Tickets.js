@@ -28,10 +28,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { tokenConfig } from '../actions/authActions'
+import { useSelector, useDispatch } from 'react-redux';
 
 
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from "react-router-dom";
+import axios from "axios";
 const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
@@ -76,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Tickets() {
   const classes = useStyles();
   const [Ticket, setTicket] = useState([]);
+  const token = useSelector(state => state.auth.token);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(5);
@@ -90,10 +94,16 @@ export default function Tickets() {
   };
 
   useEffect(() => {
-    fetch('http://localhost:8000/tickets')
-      .then(res => res.json())
-      .then(data => setTicket(data))
-  }, [])
+    axios
+      .get("https://lesan-admin-api.herokuapp.com/api/admins/tickets/list", {headers : {
+        "Authorization" : `Bearer ${token}`
+      }})
+      .then((response) => setTicket(response.data))
+      .catch((error) => console.log(error));
+    // fetch('http://lesan-admin-api.herokuapp.com/api/admins/tickets/list')
+    //   .then(res => res.json())
+    //   .then(data => setTicket(data))
+  }, [Ticket])
 
   const handleDelete = async (id) => {
     await fetch('http://localhost:8000/tickets/' + id, {
@@ -152,7 +162,7 @@ export default function Tickets() {
       <TableBody>
         {Ticket.map(ticket => (
 
-<TableRow key={ticket.Name} onClick={() => hanldeClick(ticket)} >
+<TableRow key={ticket.name} onClick={() => hanldeClick(ticket)} >
       
 <TableCell>
     <Grid container>
@@ -167,24 +177,24 @@ export default function Tickets() {
     </Grid>
   </TableCell>
 <TableCell>
-    <Typography color="textSecondary" variant="subtitle2">{ticket.Name}</Typography>
+    <Typography color="textSecondary" variant="subtitle2">{ticket.name}</Typography>
     {/* <Typography color="textSecondary" variant="body2">{ticket.Name}</Typography> */}
   </TableCell>
-<TableCell>{ticket.Date}</TableCell>
+<TableCell>{ticket.status}</TableCell>
 <TableCell>
     <Typography 
       className={classes.status}
       style={{
           backgroundColor: 
-          ((ticket.category === 'High' && '#f7dbdb') ||
-          (ticket.category === 'Medium' && '#fff7cd') ||
-          (ticket.category === 'Low' && '#dcf1d7')),
+          ((ticket.priority === 'high' && '#f7dbdb') ||
+          (ticket.priority === 'medium' && '#fff7cd') ||
+          (ticket.priority === 'low' && '#dcf1d7')),
           color: 
-          ((ticket.category === 'High' && 'Red') ||
-          (ticket.category === 'Medium' && 'Black') ||
-          (ticket.category === 'Low' && 'Green'))
+          ((ticket.priority === 'high' && 'Red') ||
+          (ticket.priority === 'medium' && 'Black') ||
+          (ticket.priority === 'low' && 'Green'))
       }}
-    >{ticket.category}</Typography>
+    >{ticket.priority}</Typography>
   </TableCell>
 </TableRow>
 
@@ -211,30 +221,48 @@ export default function Tickets() {
   )
 }
 const Modal = ({ handleClose, details, seen }) => {
-  const [age, setAge] = React.useState('');
+  const [level, setLevel] = React.useState('');
   const classes = useStyles();
+  const token = useSelector(state => state.auth.token);
+  let idd = details._id
   const handleChange = (event) => {
-    setAge(event.target.value);
+    console.log(idd)
+    console.log(event.target.value)
+    axios
+      .put("https://lesan-admin-api.herokuapp.com/api/admins/tickets/", 
+      {
+        "_id": idd,
+        "status": event.target.value
+      }, 
+      {"headers" : {
+        "Authorization" : `Bearer ${token}`,
+        "Content-Type" : "application/json"
+      }
+      
+    })
+      .then((response) => console.log(response.data))
+      .catch((error) => console.log(error));
+    
   };
-
+  
   return (
     <Dialog open={seen} onClose={handleClose} aria-labelledby="form-dialog-title">
     <DialogTitle id="form-dialog-title">{details.title}</DialogTitle>
     <DialogContent>
       <DialogContentText>
-        {details.Name}
+        {details.content}
       </DialogContentText>
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Status</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={level}
           onChange={handleChange}
         >
-          <MenuItem value={10}>In Progress</MenuItem>
-          <MenuItem value={20}>Activate</MenuItem>
-          <MenuItem value={30}></MenuItem>
+          <MenuItem value={"closed"}>closed</MenuItem>
+          <MenuItem value={"open"}>open</MenuItem>
+          <MenuItem value={"in progress"}>in progress</MenuItem>
         </Select>
       </FormControl>
     </DialogContent>
