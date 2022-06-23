@@ -83,7 +83,7 @@ class Signin extends Component  {
   render() {
     return (   
         <div>
-        <div id="main-wrapper" class="oxyy-login-register" style={{backgroundColor: "#dc3545"}}>
+        <div id="main-wrapper" class="oxyy-login-register" style={{backgroundColor: "#77c1e0"}}>
     <div class="hero-wrap d-flex align-items-center h-100">
     <div class="hero-mask bg-primary"></div>
     <div class="hero-content mx-auto w-100 min-vh-100 d-flex flex-column">
@@ -129,14 +129,14 @@ class Signin extends Component  {
                     {/* <span class="mx-2 text-2 text-muted">OR</span> */}
                     <hr class="flex-grow-1" ></hr>
                   </div>
-                  <div class="d-flex  flex-column align-items-center">
+                  {/* <div class="d-flex  flex-column align-items-center">
                      <ul class="social-icons social-icons-rounded">
                       <li class="social-icons-facebook"><a href="#" data-toggle="tooltip" data-original-title="Log In with Facebook"><i class="fab fa-facebook-f"></i></a></li>
                       <li class="social-icons-twitter"><a href="#" data-toggle="tooltip" data-original-title="Log In with Twitter"><i class="fab fa-twitter"></i></a></li>
                       <li class="social-icons-google"><a href="#" data-toggle="tooltip" data-original-title="Log In with Google"><i class="fab fa-google"></i></a></li>
                       <li class="social-icons-linkedin"><a href="#" data-toggle="tooltip" data-original-title="Log In with Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
                     </ul> 
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

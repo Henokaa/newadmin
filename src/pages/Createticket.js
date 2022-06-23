@@ -26,9 +26,11 @@ export default function Createticket() {
   const [title, setTitle] = useState('')
   const [Name, setName] = useState('')
   const [Date, setDate] = useState('')
+  const [Details, setDetails] = useState('')
   const [titleError, setTitleError] = useState(false)
   const [NameError, setNameError] = useState(false)
   const [DateError, setDateError] = useState(false)
+  const [DetailsError, setDetailsError] = useState(false)
   const [category, setCategory] = useState('Low')
 
   const handleSubmit = (e) => {
@@ -36,6 +38,7 @@ export default function Createticket() {
     setTitleError(false)
     setNameError(false)
     setDateError(false)
+    setDetailsError(false)
 
 
     if (title === '') {
@@ -47,6 +50,9 @@ export default function Createticket() {
     if (Date === '') {
         setDateError(true)
       }
+    if (Details === ''){
+      setDetailsError(true)
+    }
     if (title && Name && Date) {
       fetch('http://localhost:8000/tickets', {
         method: 'POST',
@@ -79,14 +85,17 @@ export default function Createticket() {
           error={titleError}
         />
         <TextField className={classes.field}
-          onChange={(e) => setName(e.target.value)}
-          label="Ticket Name" 
+          onChange={(e) => setDetails(e.target.value)}
+          label="Ticket Detail" 
           variant="outlined" 
           color="secondary" 
+          multiline
+          rows={4}
           fullWidth
           required
           error={NameError}
         />
+        
         <TextField className={classes.field}
           onChange={(e) => setDate(e.target.value)}
           label="Ticket Date" 
@@ -96,11 +105,12 @@ export default function Createticket() {
           required
           error={DateError}
         />
+  
         {/* <Radio value="hello" />
         <Radio value="goodbye" /> */}
 
         <FormControl className={classes.field}>
-          <FormLabel>Tasks Category</FormLabel>
+          <FormLabel>Ticket Category</FormLabel>
           <RadioGroup value={category} onChange={(e) => setCategory(e.target.value)}>
             {/* <FormControlLabel value="money" control={<Radio />} label="Money" /> */}
             <FormControlLabel value="High" control={<Radio />} label="High" />
