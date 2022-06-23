@@ -19,7 +19,6 @@ function App() {
   
   useEffect(() => {
     store.dispatch(loadUser());
-    console.log(isLogged)
     })
   return (
 

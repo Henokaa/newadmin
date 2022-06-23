@@ -12,10 +12,10 @@ import { LoginContext } from "./Contexts/LoginContext"
 import Login from './pages/Login'
 import { Redirect } from "react-router-dom"
 import blue from '@material-ui/core/colors/blue';
-import CreateNews from './pages/CreateNews'
-import News from './pages/News'
-import Users from './pages/Users'
-import api from "./api/contacts";
+import CreateNews from './pages/CreateNews';
+import News from './pages/News';
+import Users from './pages/Users';
+import api from './api/contacts';
 import { v4 as uuidv4 } from 'uuid';
 import AddContact from './components/AddContact';
 import ContactDetail from './components/ContactDetail';
@@ -23,16 +23,17 @@ import ContactList from './components/ContactList';
 import EditContact from './components/EditContact';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
+import AnalyticsChart from './components/analytics/analyticsChart'
+import { useSelector, useDispatch } from 'react-redux';
 
+import NewUpdate from './components/NewUpdate';
 
-
-import NewUpdate from './components/NewUpdate'
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#fefefe'
+      main: '#fefefe',
     },
-    secondary: blue
+    secondary: blue,
   },
   typography: {
     fontFamily: 'Quicksand',
@@ -40,25 +41,26 @@ const theme = createMuiTheme({
     fontWeightRegular: 500,
     fontWeightMedium: 600,
     fontWeightBold: 700,
-  }
-})
+  },
+});
+
 
 function Application() {
-  const LOCAL_STORAGE_KEY = "contacts";
+  const LOCAL_STORAGE_KEY = 'contacts';
   const [contacts, setContacts] = useState([]);
   const retrieveContacts = async () => {
-    const response = await api.get("/contacts");
+    const response = await api.get('/contacts');
     return response.data;
   };
 
   const addContactHandler = async (contact) => {
-    console.log(contact); 
+    console.log(contact);
     const request = {
       id: uuidv4(),
       ...contact,
     };
 
-    const response = await api.post("/contacts", request);
+    const response = await api.post('/contacts', request);
     console.log(response);
     setContacts([...contacts, response.data]);
   };
@@ -97,7 +99,9 @@ function Application() {
     //localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(contacts));
   }, [contacts]);
 
-    const { showProfile } = useContext(LoginContext);
+  const { showProfile } = useContext(LoginContext);
+  const access = useSelector(state => state.auth.isAuthenticated);
+  console.log("Accessvar ", access)
   return (
       <div>
           <ThemeProvider theme={theme}>
@@ -123,54 +127,104 @@ function Application() {
           <Route exact path="/">
               <Home />
             </Route>
-            <Route exact path="/notes">
-              <Notes/>
+            <Route exact path="/realtime">
+              <AnalyticsChart />
             </Route>
-            <Route exact path="/create">
-              <Create />
-            </Route>
-            <Route path="/createticket">
-              <Createticket />
-            </Route>
-            <Route path="/createnews">
-              <CreateNews />
-            </Route>
-            <Route path="/news">
-              <News />
-            </Route>
-            <Route path="/tickets">
-              <Tickets />
-            </Route>
+            {/* <Route exact path="/notes" element={access ? <Notes/>: <Redirect to='/signin' /> } /> */}
+            <Route
+                  path="/notes"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <Notes /> :
+                    <Redirect to='/signin' />
+                  )}
+                />
+            
+            <Route
+                  path="/create"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <Create /> :
+                    <Redirect to='/signin' />
+                  )}
+                />
+            
+            <Route
+                  path="/createticket"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <Createticket /> :
+                    <Redirect to='/signin' />
+                  )}
+                />
+            
+            <Route
+                  path="/createnews"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <CreateNews />:
+                    <Redirect to='/signin' />
+                  )}
+                />
+      
+            <Route
+                  path="/news"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <News />:
+                    <Redirect to='/signin' />
+                  )}
+                />
+            
+
+            <Route
+                  path="/tickets"
+                  exact
+                  render={(props) => (
+                    access ?
+                    <Tickets />:
+                    <Redirect to='/signin' />
+                  )}
+                />
+
             {/* <Route path="/users">
               <Users />
             </Route> */}
-            <Route
-            path="/users"
-            exact
-            render={(props) => (
-              <ContactList
-                {...props}
-                contacts={contacts}
-                getContactId={removeContactHandler}
-              />
-            )}
-          />
-          <Route
-            path="/add"
-            render={(props) => (
-              <AddContact {...props} addContactHandler={addContactHandler} />
-            )}
-          />
+                <Route
+                  path="/users"
+                  exact
+                  render={(props) => (
+                    <ContactList
+                      {...props}
+                      contacts={contacts}
+                      getContactId={removeContactHandler}
+                    />
+                  )}
+                />
+                <Route
+                  path="/add"
+                  render={(props) => (
+                    <AddContact
+                      {...props}
+                      addContactHandler={addContactHandler}
+                    />
+                  )}
+                />
 
-          <Route
-            path="/edit"
-            render={(props) => (
-              <EditContact
-                {...props}
-                updateContactHandler={updateContactHandler}
-              />
-            )}
-          />
+                <Route
+                  path="/edit"
+                  render={(props) => (
+                    <EditContact
+                      {...props}
+                      updateContactHandler={updateContactHandler}
+                    />
+                  )}
+                />
 
           <Route path="/contact/:id" component={ContactDetail} />
           <Route path="/newupdate" component={NewUpdate} />
@@ -186,7 +240,6 @@ function Application() {
             <Login/>
     )} */}
     </div>
-
   );
 }
 

@@ -15,6 +15,21 @@ import {
   TablePagination,
   TableFooter
 } from '@material-ui/core';
+
+
+import TextField from '@material-ui/core/TextField';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+
+
 import AddIcon from '@material-ui/icons/Add';
 import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
@@ -47,7 +62,15 @@ const useStyles = makeStyles((theme) => ({
       borderRadius: 8,
       padding: '3px 10px',
       display: 'inline-block'
-  }
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+
 })); 
 
 export default function Tickets() {
@@ -86,6 +109,19 @@ export default function Tickets() {
     700: 1
   };
 
+  const [show, setShow] = useState(false);
+  const [selectedData, setSelectedData] = useState({});
+  const hanldeClick = (selectedRec) => {
+    setSelectedData(selectedRec);
+    setShow(true);
+  };
+
+  const hideModal = () => {
+    setShow(false);
+  };
+
+  
+
   return (
      <div>
       <Grid container spacing={3}>
@@ -116,7 +152,42 @@ export default function Tickets() {
       <TableBody>
         {Ticket.map(ticket => (
 
-            <TicketCard ticket={ticket} handleDelete={handleDelete} />
+<TableRow key={ticket.Name} onClick={() => hanldeClick(ticket)} >
+      
+<TableCell>
+    <Grid container>
+        <Grid item lg={2}>
+            <Avatar src='.' className={classes.avatar}/>
+        </Grid>
+        <Grid item lg={10}>
+            <Typography className={classes.name}>{ticket.title}</Typography>
+            {/* <Typography color="textSecondary" variant="body2">{ticket.email}</Typography>
+            <Typography color="textSecondary" variant="body2">{ticket.phone}</Typography> */}
+        </Grid>
+    </Grid>
+  </TableCell>
+<TableCell>
+    <Typography color="textSecondary" variant="subtitle2">{ticket.Name}</Typography>
+    {/* <Typography color="textSecondary" variant="body2">{ticket.Name}</Typography> */}
+  </TableCell>
+<TableCell>{ticket.Date}</TableCell>
+<TableCell>
+    <Typography 
+      className={classes.status}
+      style={{
+          backgroundColor: 
+          ((ticket.category === 'High' && '#f7dbdb') ||
+          (ticket.category === 'Medium' && '#fff7cd') ||
+          (ticket.category === 'Low' && '#dcf1d7')),
+          color: 
+          ((ticket.category === 'High' && 'Red') ||
+          (ticket.category === 'Medium' && 'Black') ||
+          (ticket.category === 'Low' && 'Green'))
+      }}
+    >{ticket.category}</Typography>
+  </TableCell>
+</TableRow>
+
           
         ))}
       </TableBody>
@@ -131,8 +202,50 @@ export default function Tickets() {
             onChangeRowsPerPage={handleChangeRowsPerPage}
         />
         </TableFooter>
+
       </Table>
+
+      {show && <Modal details={selectedData} handleClose={hideModal} seen={show}/>}
     </TableContainer>
   </div>
   )
 }
+const Modal = ({ handleClose, details, seen }) => {
+  const [age, setAge] = React.useState('');
+  const classes = useStyles();
+  const handleChange = (event) => {
+    setAge(event.target.value);
+  };
+
+  return (
+    <Dialog open={seen} onClose={handleClose} aria-labelledby="form-dialog-title">
+    <DialogTitle id="form-dialog-title">{details.title}</DialogTitle>
+    <DialogContent>
+      <DialogContentText>
+        {details.Name}
+      </DialogContentText>
+      <FormControl className={classes.formControl}>
+        <InputLabel id="demo-simple-select-label">Status</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>In Progress</MenuItem>
+          <MenuItem value={20}>Activate</MenuItem>
+          <MenuItem value={30}></MenuItem>
+        </Select>
+      </FormControl>
+    </DialogContent>
+    <DialogActions>
+      <Button onClick={handleClose} color="primary">
+        Cancel
+      </Button>
+      <Button onClick={handleClose} color="primary">
+        Subscribe
+      </Button>
+    </DialogActions>
+  </Dialog>
+  );
+};
